@@ -1,4 +1,4 @@
-// language: YAML, file: project.yml — xcodegen spec for the chatapp iOS project
+# chatapp — xcodegen spec, targets iOS 16 (iPhone+iPad), unsigned desktop-build
 name: chatapp
 options:
   bundleIdPrefix: com.kai
