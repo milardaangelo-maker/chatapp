@@ -3,6 +3,7 @@
 import Foundation
 import Combine
 import UIKit
+import SwiftUI // withAnimation lives here — model calls it on published writes
 
 func dismissKeyboard_() {
     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
@@ -152,7 +153,10 @@ final class ChatModel: ObservableObject {
                 msg.id = token.key
                 return msg
             }
-            fresh.sort { $0.t != $1.t ? $0.t < $1.t : $0.id < $1.id }
+            fresh.sort { a, b in
+                if a.t != b.t { return a.t < b.t }
+                return a.id < b.id
+            }
             withAnimation(.easeOut(duration: 0.15)) { messages = fresh }
             saveCache()
         } catch {

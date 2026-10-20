@@ -1,0 +1,13 @@
+﻿gh : 
+At line:1 char:1
++ gh auth login --hostname github.com --git-protocol https --web *>&1 | ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+! First copy your one-time code: B8EB-66C0
+Open this URL to continue in your web browser: https://github.com/login/device
+Γ£ô Authentication complete.
+- gh config set -h github.com git_protocol https
+Γ£ô Configured git protocol
+Γ£ô Logged in as milardaangelo-maker
