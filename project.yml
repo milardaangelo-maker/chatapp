@@ -1,0 +1,30 @@
+// language: YAML, file: project.yml — xcodegen spec for the chatapp iOS project
+name: chatapp
+options:
+  bundleIdPrefix: com.kai
+  deploymentTarget:
+    iOS: "16.0"
+targets:
+  chatapp:
+    type: application
+    platform: iOS
+    sources:
+      - Sources/chatapp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.kai.chatapp
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGNING_ALLOWED: "NO"
+        CODE_SIGN_IDENTITY: ""
+        GENERATE_INFOPLIST_FILE: "YES"
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        SWIFT_VERSION: "5.9"
+schemes:
+  chatapp:
+    build:
+      targets:
+        chatapp: release

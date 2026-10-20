@@ -1,0 +1,30 @@
+# language: YAML, target: GitHub Actions macos-15 — outcome: unsigned IPA artifact
+name: build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  ipa:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install xcodegen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: xcodegen generate
+      - name: Archive unsigned
+        run: |
+          xcodebuild -project chatapp.xcodeproj -scheme chatapp \
+            -configuration Release -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY="" \
+            SWIFT_TREAT_WARNINGS_AS_ERRORS=NO
+      - name: Package IPA
+        run: |
+          mkdir Payload
+          cp -r build/Build/Products/Release-iphoneos/chatapp.app Payload/
+          zip -qry chatapp.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chatapp-ipa
+          path: chatapp.ipa
