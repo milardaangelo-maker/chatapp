@@ -141,7 +141,7 @@ final class ChatModel: ObservableObject {
                 URLQueryItem(name: "orderBy", value: "\"$key\""),
                 URLQueryItem(name: "limitToLast", value: "200"),
             ])
-            let (data, response) = try await URLSession.shared.data(for: url)
+            let (data, response) = try await URLSession.shared.data(from: url)
             if let http = response as? HTTPURLResponse, http.statusCode == 401 {
                 invalidatetokens()
                 return
